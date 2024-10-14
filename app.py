@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 from logger import get_logger
 from byaldi import RAGMultiModalModel
 import markdown
-
+from pyngrok import ngrok
 # Set the TOKENIZERS_PARALLELISM environment variable to suppress warnings
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
@@ -342,4 +342,6 @@ def get_indexed_files(session_id):
         return jsonify({"success": False, "message": "Session not found."})
 
 if __name__ == '__main__':
+    public_url = ngrok.connect(5050)
+    print("Public URL:", public_url)
     app.run(port=5050, debug=True)
