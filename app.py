@@ -14,7 +14,7 @@ import markdown
 from pyngrok import ngrok
 # Set the TOKENIZERS_PARALLELISM environment variable to suppress warnings
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-
+ngrokToken=os.environ["NGROK_TOKEN"]
 # Initialize the Flask application
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure secret key
@@ -342,6 +342,7 @@ def get_indexed_files(session_id):
         return jsonify({"success": False, "message": "Session not found."})
 
 if __name__ == '__main__':
+    ngrok.set_auth_token(ngrokToken)
     public_url = ngrok.connect(5050)
     print("Public URL:", public_url)
     app.run(port=5050, debug=True)
