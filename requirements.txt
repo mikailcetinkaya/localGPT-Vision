@@ -16,3 +16,4 @@ groq
 markdown
 hf_transfer
 pyngrok
+pdf2image
