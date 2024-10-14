@@ -345,4 +345,4 @@ if __name__ == '__main__':
     ngrok.set_auth_token(ngrokToken)
     public_url = ngrok.connect(5050)
     print("Public URL:", public_url)
-    app.run(port=5050, debug=True)
+    app.run(port=5050, debug=False)
